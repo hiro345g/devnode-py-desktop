@@ -310,7 +310,13 @@ sed -i 's/devnode-desktop/devnode-py-desktop-mozc/' ${DIST_DIR}/docker-compose.y
 rm -fr ${DEV_DIR}/devnode-py-desktop
 ```
 
-この処理と同じ動作をするスクリプトを `${REPO_DIR}/workspace_share/script/create-devnode-py-desktop-mozc.sh` に用意してあります。これを devnode-py-desktop コンテナーの中で実行すると、`devnode-py-desktop-mozc` ディレクトリー（コンテナー内だと `devnode-py-desktop:/share/workspace_share/devnode-py-desktop-mozc` ディレクトリー、Docker ホストだと `${REPO_DIR}/workspace_share/devnode-py-desktop-mozc` ディレクトリー）が作成されます。
+この処理と同じ動作をするスクリプトを `${REPO_DIR}/workspace_share/script/create-devnode-py-desktop-mozc.sh` に用意してあります。これを devnode-py-desktop コンテナーの中で実行します。
+
+```console
+sh /share/script/create-devnode-py-desktop-mozc.sh
+```
+
+すると、`devnode-py-desktop-mozc` ディレクトリー（コンテナー内だと `devnode-py-desktop:/share/workspace_share/devnode-py-desktop-mozc` ディレクトリー、Docker ホストだと `${REPO_DIR}/workspace_share/devnode-py-desktop-mozc` ディレクトリー）が作成されます。
 
 利用するときに使えるファイルが用意できたら、イメージにタグをつけます。タグをつける場合は、次のようにします。
 
