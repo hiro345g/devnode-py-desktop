@@ -1,0 +1,13 @@
+#!/bin/sh
+xmodmap "/home/node/.Xmodmap"
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+export LANG=ja_JP.UTF-8
+export XMODIFIERS="@im=ibus"
+export GTK_IM_MODULE="ibus"
+export XIM_PROGRAM="ibus-daemon -d -x"
+export QT_IM_MODULE="ibus"
+ibus-daemon -d -x&
+exec fluxbox

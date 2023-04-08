@@ -1,0 +1,34 @@
+name: devnode-py-desktop
+services:
+  devnode-py-desktop:
+    image: devnode-py-desktop:1.0
+    container_name: devnode-py-desktop
+    hostname: devnode-py-desktop
+    init: true
+    tty: true
+    user: node
+    working_dir: /home/node
+    networks:
+      devnode-net:
+    volumes:
+      - repo-data:/home/node/repo
+      - vscode-server-extensions:/home/node/.vscode-server/extensions
+      - type: bind
+        source: ${SHARE_DIR:-./workspace_share}
+        target: /share
+    environment:
+      ENV LANGUAGE: ja_JP.UTF-8
+      ENV LANG: ja_JP.UTF-8
+      ENV LC_ALL: ja_JP.UTF-8
+      EDITOR: code
+      NPM_CONFIG_PREFIX: /home/node/repo/.npm-global
+
+volumes:
+  repo-data:
+    name: devnode-py-desktop-node-repo-data
+  vscode-server-extensions:
+    name: devnode-py-desktop-vscode-server-extensions
+
+networks:
+  devnode-net:
+    name: devnode-py-desktop-net

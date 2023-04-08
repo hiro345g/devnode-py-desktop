@@ -1,0 +1,111 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[jsonc]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true
+        },
+        "[markdown]": {
+            "editor.formatOnSave": false
+        },
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.codeActionsOnSave": {
+            "source.addMissingImports": true,
+            "source.organizeImports": true,
+            "source.fixAll.eslint": true
+        },
+        "javascript.preferences.importModuleSpecifier": "non-relative",
+        "typescript.preferences.importModuleSpecifier": "non-relative",
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true,
+        "terminal.integrated.defaultProfile.linux": "bash",
+    },
+
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "プログラムの起動",
+                "skipFiles": [
+                    "<node_internals>/**"
+                ],
+                "program": "${file}"
+            },
+            {
+                "name": "npm による起動",
+                "request": "launch",
+                "runtimeArgs": [
+                    "run-script",
+                    "debug"
+                ],
+                "runtimeExecutable": "npm",
+                "skipFiles": [
+                    "<node_internals>/**"
+                ],
+                "type": "node"
+            },
+            {
+                // 利用時 Chrome をリモートでバッグポートを開いて起動しておくこと
+                // $ google-chrome --remote-debugging-port=9222 --no-first-run --no-default-browser-check
+                "name": "Attach to Chrome",
+                "port": 9222,
+                "request": "attach",
+                "type": "chrome",
+                //"urlFilter": "http://localhost:3000/*",
+                "webRoot": "${workspaceFolder}"
+            },
+            {
+                "name": "Python: 現在のファイル",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal",
+                "justMyCode": true,
+                "args": [],
+                "cwd": "${fileDirname}"
+            },
+            {
+                "name": "Python: Debug",
+                "type": "python",
+                "request": "launch",
+                "stopOnEntry": true,
+                "program": "${file}",
+                "debugOptions": [
+                    "WaitOnAbnormalExit",
+                    "WaitOnNormalExit",
+                    "RedirectOutput"
+                ]
+            },
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "oderwat.indent-rainbow",
+            "eamodio.gitlens",
+            "donjayamanne.githistory",
+            "mhutchie.git-graph",
+            "ms-azuretools.vscode-docker",
+            "christian-kohler.npm-intellisense",
+            "dbaeumer.vscode-eslint",
+            "ms-toolsai.jupyter",
+            "ms-toolsai.vscode-jupyter-cell-tags",
+            "ms-toolsai.jupyter-keymap",
+            "ms-toolsai.jupyter-renderers",
+            "ms-toolsai.vscode-jupyter-slideshow",
+            "ms-python.vscode-pylance",
+            "ms-python.python"
+        ]
+    }
+}
