@@ -5,9 +5,9 @@ DIST_DIR=${BASE_DIR}/devnode-py-desktop-mozc
 
 if [ ! -e ${DEV_DIR}/devnode-py-desktop ]; then
   cd ${DEV_DIR}/
-  wget https://github.com/hiro345g/devnode-desktop/archive/refs/heads/main.zip
+  wget https://github.com/hiro345g/devnode-py-desktop/archive/refs/heads/main.zip
   unzip ${DEV_DIR}/main.zip
-  mv ${DEV_DIR}/devnode-desktop-main ${DEV_DIR}/devnode-py-desktop
+  mv ${DEV_DIR}/devnode-py-desktop-main ${DEV_DIR}/devnode-py-desktop
   rm ${DEV_DIR}/main.zip
 fi
 if [ ! -e ${DIST_DIR}/.devcontainer ]; then mkdir -p ${DIST_DIR}/.devcontainer; fi

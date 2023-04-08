@@ -316,16 +316,16 @@ rm -fr ${DEV_DIR}/devnode-py-desktop
 
 ```console
 docker compose -p devnode-py-desktop stop devnode-py-desktop
-docker commit devnode-py-desktop devnode-py-desktop-mozc:1.2
+docker commit devnode-py-desktop devnode-py-desktop-mozc:1.0
 ```
 
-この後に devnode-py-desktop-mozc:1.2 を使ってコンテナーを起動する場合は、devnode-py-desktop は削除しておます。
+この後に devnode-py-desktop-mozc:1.0 を使ってコンテナーを起動する場合は、devnode-py-desktop は削除しておます。
 
 ```console
 docker compose -p devnode-py-desktop down
 ```
 
-devnode-py-desktop-mozc:1.2 イメージを使って devnode-py-desktop-mozc コンテナーの Dev Container を起動するときは、Docker ホストの VS Code で `devnode-py-desktop-mozc` ディレクトリーを開きます。
+devnode-py-desktop-mozc:1.0 イメージを使って devnode-py-desktop-mozc コンテナーの Dev Container を起動するときは、Docker ホストの VS Code で `devnode-py-desktop-mozc` ディレクトリーを開きます。
 `devnode-py-desktop-mozc` ディレクトリーは `devnode-py-desktop` ディレクトリーと同じディレクトリー階層へ移動して使うと管理しやすいでしょう。
 
 具体的なコマンドは次のようになります。
