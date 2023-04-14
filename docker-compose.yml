@@ -1,7 +1,7 @@
 name: devnode-py-desktop
 services:
   devnode-py-desktop:
-    image: devnode-py-desktop:1.0
+    image: hiro345g/devnode-py-desktop:1.0
     container_name: devnode-py-desktop
     hostname: devnode-py-desktop
     init: true
