@@ -159,11 +159,25 @@ devnode-py-desktop/
 
 - VNC のパスワード: vscode
 
-　別のパスワードにしたい場合は、「ビルド」の説明にしたがって、Docker イメージの作成時に指定してください。
+　別のパスワードにしたい場合は、「カスタマイズ」の説明にしたがって、Docker イメージの作成時に指定してください。
 
 ## 使い方
 
-　先に「環境変数」を参照して、必要なら `.env` ファイルを用意してください。カスタマイズをしたい場合は、「ビルド」を参照して Docker イメージを作成してください。
+　ここでは使い方について説明します。
+
+### 使う準備
+
+　先に「環境変数」を参照して、必要なら `.env` ファイルを用意してください。カスタマイズをしたい場合は、「カスタマイズ」を参照して Docker イメージを作成してください。
+
+　npm コマンドを使うときは、`docker-compose.yml` で指定した環境変数 `NPM_CONFIG_PREFIX` のディレクトリーの lib ディレクトリー（`NPM_CONFIG_PREFIX` を変更していない場合は `/home/node/repo/.npm-global/lib`）ディレクトリーをコンテナーが使う devnode-py-desktop-node-repo-data ボリューム内にあらかじめ作成しておく必要があります。下記コマンドで用意できます。
+
+```console
+cd ${REPO_DIR}
+docker compose run --rm devnode-py-desktop bash -c 'mkdir -p ${NPM_CONFIG_PREFIX}/lib'
+docker compose down
+```
+
+### 利用開始
 
 　VS Code を起動し、F1 キーを入力してコマンドパレットを表示してから、「Dev Containers: Open Folder in Container...」をクリックします。フォルダーを選択する画面になるので `${REPO_DIR}` を指定して開きます。すると `${REPO_DIR}/.devcontainer/devcontainer.json` の指定にしたがって、devnode-py-desktop コンテナーが Dev Container として起動します。このとき、拡張機能なども追加されます。
 それから、devnode-py-desktop コンテナー用の VS Code の画面となります。
@@ -178,15 +192,7 @@ devnode-py-desktop/
 
 ### コンテナーの停止、削除の仕方
 
-　VS Code の Docker 拡張機能の画面で、CONTAINERS の欄に表示されている devnode-py-desktop のコンテキストメニューから `Compose Sotp` でコンテナー停止、`Compose Down` でコンテナー削除ができます。
-
-## npm コマンド
-
-　npm コマンドを使うときは、`docker-compose.yml` で指定した環境変数 `NPM_CONFIG_PREFIX` のディレクトリーの lib ディレクトリー（`NPM_CONFIG_PREFIX` を変更していない場合は `/home/node/repo/.npm-global/lib`）ディレクトリーをコンテナー内であらかじめ作成しておいてください。
-
-```console
-mkdir -p ${NPM_CONFIG_PREFIX}/lib
-```
+　VS Code の Docker 拡張機能の画面で、CONTAINERS の欄に表示されている devnode-py-desktop のコンテキストメニューから `Compose Stop` でコンテナー停止、`Compose Down` でコンテナー削除ができます。
 
 ## 日本語入力
 
@@ -331,7 +337,7 @@ code devnode-py-desktop-mozc
 
 　以上で、mozc がインストールされた状態の devnode-py-desktop が使えるようになります。
 
-## ビルド
+## カスタマイズ（ビルド）
 
 　カスタマイズするにはビルドが必要です。Dev Container 環境を起動する度に自動でビルドを実行する必要はないので、ビルド作業を別にしてあります。実行時用のものと似たような `docker-compose.yml` を用意することになりますが、こうしておいた方が Docker イメージのタグ名指定が設定ファイルで明示的にわかるようになります。また、意図しない更新も入りにくくなり、利用時に安定します。
 
@@ -342,7 +348,7 @@ code devnode-py-desktop-mozc
 
 　準備も必要なので、順番に説明します。
 
-### 準備
+### ビルドの準備
 
 　使用する Docker イメージを変更する必要があるので、`${REPO_DIR}/docker-compose.yml` を次のように編集します。
 
@@ -380,7 +386,7 @@ docker image tag hiro345g/devnode-py-desktop:1.0 devnode-py-desktop:1.0
 
 ### VS Code を使う方法
 
-　VS Code を起動してから、F1 キーを入力して VS Code のコマンドパレットを表示してます。入力欄へ「dev containers open」などと入力すると「Dev Containers: Open Folder in Container...」が選択肢に表示されます。これをクリックすると、フォルダーを選択する画面になるので `${REPO_DIR}/build_devcon` を指定して開きます。
+　VS Code を起動してから、F1 キーを入力して VS Code のコマンドパレットを表示します。入力欄へ「dev containers open」などと入力すると「Dev Containers: Open Folder in Container...」が選択肢に表示されます。これをクリックすると、フォルダーを選択する画面になるので `${REPO_DIR}/build_devcon` を指定して開きます。
 
 　`vsc-build_devcon-` で始まる Docker イメージが作成されてコンテナーが起動します。`vsc-build_devcon-` で始まる Docker イメージに `devnode-py-desktop:1.0` のタグをつけます。
 
