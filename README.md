@@ -169,7 +169,7 @@ devnode-py-desktop/
 
 　先に「環境変数」を参照して、必要なら `.env` ファイルを用意してください。カスタマイズをしたい場合は、「カスタマイズ」を参照して Docker イメージを作成してください。
 
-　npm コマンドを使うときは、`docker-compose.yml` で指定した環境変数 `NPM_CONFIG_PREFIX` のディレクトリーの lib ディレクトリー（`NPM_CONFIG_PREFIX` を変更していない場合は `/home/node/repo/.npm-global/lib`）ディレクトリーをコンテナーが使う devnode-py-desktop-node-repo-data ボリューム内にあらかじめ作成しておく必要があります。下記コマンドで用意できます。
+　`npm` コマンドを使うときは、`docker-compose.yml` で指定した環境変数 `NPM_CONFIG_PREFIX` のディレクトリーの `lib` ディレクトリー（`NPM_CONFIG_PREFIX` を変更していない場合は `/home/node/repo/.npm-global/lib`）ディレクトリーをコンテナーが使う devnode-py-desktop-node-repo-data ボリューム内にあらかじめ作成しておく必要があります。下記コマンドで用意できます。
 
 ```console
 cd ${REPO_DIR}
